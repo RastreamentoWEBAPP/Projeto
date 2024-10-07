@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-9 mx-auto">
+      <div class="card my-5 p-1 p-md-3">
+        <div class="p-2 pt-5 p-md-5 rounded-3">
+          <div class="row">
+            <div class="col-8 col-md-8 col-sm-8 col-lg-8 d-flex flex-column justify-content-between">
+              <div>
+                <h1 class="display-6 fw-bold">
+                  Olá, <span [style.color]="'#009688'">{{emailUsuario}} !!!</span>
+                </h1>
+                <p class="fs-4 mt-4">
+                  Seja bem-vindo!
+                </p>
+              </div>
+              <div class="d-grid d-lg-flex text-center gap-2 mt-5 align-self-start">
+                <button class="btn text-light btn-lg" [style.background-color]="'#009688'" type="button" routerLink="/campos/listar">Gerenciar Campos</button>
+              </div>
+            </div>
+            <div class="col-4 col-md-4 col-sm-4 col-lg-4">
+              <img src="assets/QR Code-bro.png" alt="Imagem Descrição" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

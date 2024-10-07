@@ -1,0 +1,63 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.col {
+  flex: 1;
+  text-align: center; /* Ajuste conforme necessário */
+  width: 25%;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.header-size {
+  color: black;
+  font-weight: medium;
+  font-size: medium;
+}
+
+.tag {
+  padding: 0.25em 0.75em;
+  border-radius: 12px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.tag-pendente {
+  background-color: #ffeeba;
+  color: #856404;
+  border-color: #856404;
+}
+
+.tag-aprovado {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #155724;
+}
+
+.tag-reprovado {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #721c24;
+}
+
+.custom-header {
+  background-color: rgba(173, 170, 170, 0.562);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

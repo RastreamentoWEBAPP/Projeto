@@ -1,0 +1,1080 @@
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-md-5">
+
+    <h1 class="fs-2">Inserir Campo</h1>
+
+    <form [formGroup]="form!" (ngSubmit)="gravar()" class="d-grid mt-4">
+
+      <!-- Dados do Campo -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Dados do Campo
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <!-- Dados Básicos do Campo -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>N° Campo</mat-label>
+            <input type="text" formControlName="numeroCampo" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Safra</mat-label>
+            <input type="text" formControlName="safra" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <input type="text" formControlName="especie" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Categoria</mat-label>
+            <mat-select formControlName="categoria">
+              <mat-option value="Básica">Básica</mat-option>
+              <mat-option value="C1">C1</mat-option>
+              <mat-option value="C2">C2</mat-option>
+              <mat-option value="S1">S1</mat-option>
+              <mat-option value="S2">S2</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de Glebas</mat-label>
+            <input type="number" formControlName="numeroGlebas" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Latitude</mat-label>
+            <input type="text" formControlName="latitude" matInput/>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Longitude</mat-label>
+            <input type="text" formControlName="longitude" matInput/>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nome do Cooperado</mat-label>
+            <input type="text" formControlName="cooperadoNome" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nome da Propriedade</mat-label>
+            <input type="text" formControlName="propriedadeNome" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Município</mat-label>
+            <input type="text" formControlName="municipio" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>UF</mat-label>
+            <mat-select formControlName="uf">
+              <mat-option value="RS">RS</mat-option>
+              <mat-option value="SC">SC</mat-option>
+              <mat-option value="PR">PR</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Cultivar</mat-label>
+            <mat-select formControlName="cultivar">
+              <mat-option value="BRS Pampa CL">BRS Pampa CL</mat-option>
+              <mat-option value="BRS A705">BRS A705</mat-option>
+              <mat-option value="BRS Catiana">BRS Catiana</mat-option>
+              <mat-option value="Epagri 108">Epagri 108</mat-option>
+              <mat-option value="SCS116 Satoru">SCS116 Satoru</mat-option>
+              <mat-option value="SCS121 CL">SCS121 CL</mat-option>
+              <mat-option value="SCS122 Miura">SCS122 Miura</mat-option>
+              <mat-option value="SCS125">SCS125</mat-option>
+              <mat-option value="SCS 126 Dueto">SCS 126 Dueto</mat-option>
+              <mat-option value="SCS 127CL">SCS 127CL</mat-option>
+              <mat-option value="Beloriso CL">Beloriso CL</mat-option>
+              <mat-option value="Risomarino CL">Risomarino CL</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Área (ha)</mat-label>
+            <input type="number" formControlName="area" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Data de Plantio</mat-label>
+            <input formControlName="dataPlantio" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Produção Estimada(tons)</mat-label>
+            <input type="number" formControlName="producaoEstimada" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Link das Imagens</mat-label>
+            <input type="text" formControlName="LinkImagens" matInput />
+          </mat-form-field>
+          <!-- Dados Básicos do Campo Final-->
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <br>
+
+      <!-- Resultados Parciais 01 - Emergência -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Avaliação 01 - Emergência
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="emergenciaEspecie1">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="emergenciaIndividuos1" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="emergenciaAmostrasPorEspecie1" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 1 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="emergenciaEspecie2">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="emergenciaIndividuos2" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="emergenciaAmostrasPorEspecie2" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 2 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="emergenciaEspecie3">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="emergenciaIndividuos3" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="emergenciaAmostrasPorEspecie3" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 3 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="emergenciaEspecie4">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="emergenciaIndividuos4" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="emergenciaAmostrasPorEspecie4" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 4 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="emergenciaEspecie5">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="emergenciaIndividuos5" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="emergenciaAmostrasPorEspecie5" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 5 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="emergenciaEspecie6">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="emergenciaIndividuos6" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="emergenciaAmostrasPorEspecie6" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Observações (informações internas)</mat-label>
+            <textarea style="min-height: 80px;" type="text" formControlName="observacoesEmergencia" matInput></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Conclusões (informações públicas)</mat-label>
+            <textarea style="min-height: 80px;" min-height="100px" type="text" formControlName="conclusoesEmergencia" matInput></textarea>
+          </mat-form-field>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <br>
+
+      <!-- Resultados Parciais 02 - Florecimento -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Avaliação 02 - Florecimento
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="florecimentoEspecie1">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="florecimentoIndividuos1" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="florecimentoAmostrasPorEspecie1" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 1 -->
+
+          <!-- Inicio Espécie 2 -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="florecimentoEspecie2">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="florecimentoIndividuos2" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="florecimentoAmostrasPorEspecie2" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 2 -->
+
+          <!-- Inicio Espécie 3 -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="florecimentoEspecie3">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="florecimentoIndividuos3" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="florecimentoAmostrasPorEspecie3" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 3 -->
+
+          <!-- Inicio Espécie 4 -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="florecimentoEspecie4">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="florecimentoIndividuos4" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="florecimentoAmostrasPorEspecie4" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 4 -->
+
+          <!-- Inicio Espécie 5 -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="florecimentoEspecie5">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="florecimentoIndividuos5" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="florecimentoAmostrasPorEspecie5" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 5 -->
+
+          <!-- Inicio Espécie 6 -->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="florecimentoEspecie6">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="florecimentoIndividuos6" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="florecimentoAmostrasPorEspecie6" matInput />
+          </mat-form-field>
+          <!-- Fim Espécie 6 -->
+
+          <mat-divider></mat-divider>
+          <br>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Observações (informações internas)</mat-label>
+            <textarea style="min-height: 80px;" type="text" formControlName="observacoesFlorecimento" matInput></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Conclusões (informações públicas)</mat-label>
+            <textarea style="min-height: 80px;" type="text" formControlName="conclusoesFlorecimento" matInput></textarea>
+          </mat-form-field>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <br>
+
+      <!-- Resultados Parciais 03 - Pré Colheita -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Avaliação 03 - Pré Colheita
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="preColheitaEspecie1">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="preColheitaIndividuos1" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="preColheitaAmostrasPorEspecie1" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 1 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="preColheitaEspecie2">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="preColheitaIndividuos2" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="preColheitaAmostrasPorEspecie2" matInput />
+          </mat-form-field>
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 2 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="preColheitaEspecie3">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="preColheitaIndividuos3" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="preColheitaAmostrasPorEspecie3" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 3 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="preColheitaEspecie4">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="preColheitaIndividuos4" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="preColheitaAmostrasPorEspecie4" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 4 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="preColheitaEspecie5">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="preColheitaIndividuos5" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="preColheitaAmostrasPorEspecie5" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+          <!-- Fim Espécie 5 -->
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="preColheitaEspecie6">
+              <mat-option value="Plantas de arroz atípico">Plantas de arroz atípico</mat-option>
+              <mat-option value="Plantas de arroz vermelho">Plantas de arroz vermelho</mat-option>
+              <mat-option value="Capim arroz (Echinochloa spp.)">
+                Capim arroz (
+                <span class="italic">Echinochloa spp.</span> )
+              </mat-option>
+              <mat-option value="Sagitária (Sagittaria montevidensis)">
+                Sagitária (
+                <span class="italic">Sagittaria montevidensis</span> )
+              </mat-option>
+              <mat-option value="Cyperus (Cyperus spp.)">
+                Cyperus (
+                <span class="italic">Cyperus spp.</span> )
+              </mat-option>
+              <mat-option value="Aguapé (Heteranthera reniformis)">
+                Aguapé (
+                <span class="italic">Heteranthera reniformis</span> )
+              </mat-option>
+              <mat-option value="Grama boiadeira (Luziola peruviana)">
+                Grama boiadeira (
+                <span class="italic">Luziola peruviana</span> )
+              </mat-option>
+              <mat-option value="Cruz-de-Malta (Ludwigia spp.)">
+                Cruz-de-Malta (
+                <span class="italic">Ludwigia spp.</span> )
+              </mat-option>
+              <mat-option value="">Nenhuma</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de indivíduos por espécie</mat-label>
+            <input type="number" formControlName="preColheitaIndividuos6" matInput />
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Número de amostras por espécie</mat-label>
+            <input type="number" formControlName="preColheitaAmostrasPorEspecie6" matInput />
+          </mat-form-field>
+
+          <mat-divider></mat-divider>
+          <br>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Observações (informações internas)</mat-label>
+            <textarea style="min-height: 80px;" type="text" formControlName="observacoesPreColheita" matInput></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Conclusões (informações públicas)</mat-label>
+            <textarea style="min-height: 80px;" type="text" formControlName="conclusoesPreColheita" matInput></textarea>
+          </mat-form-field>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <br>
+
+      <!-- Resultado Final -->
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Resultado Parcial
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Situação</mat-label>
+            <mat-select formControlName="situacao">
+              <mat-option value="Pendente">Pendente</mat-option>
+              <mat-option value="Aprovado">Aprovado</mat-option>
+              <mat-option value="Reprovado">Reprovado</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Data de Colheita</mat-label>
+            <input formControlName="dataColheita" matInput [matDatepicker]="picker1">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Umidade</mat-label>
+            <input type="text" formControlName="umidade" matInput />
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Observações (informações internas)</mat-label>
+            <input type="text" formControlName="observacoes" matInput />
+          </mat-form-field>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <br>
+
+      <!-- Botões -->
+      <div class="d-flex justify-content-end gap-2 mt-5">
+        <button mat-raised-button color="primary" class="col" type="submit">
+          <mat-icon>save</mat-icon>
+          Salvar
+        </button>
+        <button mat-stroked-button color="warn" class="col" type="button" (click)="voltar()">
+          <mat-icon>arrow_back</mat-icon>
+          Voltar
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

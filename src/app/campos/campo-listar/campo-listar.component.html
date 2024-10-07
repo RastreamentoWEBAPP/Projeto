@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-11 col-lg-11 mx-auto mt-3">
+      <div class="text-center text-md-start">
+        <h1 class="fw-bold fs-2">Campos</h1>
+      </div>
+
+      <div class="button-container my-3">
+        <button
+          routerLink="/campos/inserir"
+          mat-raised-button
+          class="me-auto py-2 px-4 fs-5 fw-medium"
+          color="primary">
+          <mat-icon>add</mat-icon> Inserir Campo
+        </button>
+        <button mat-raised-button class="me-auto py-2 px-4 fs-5 fw-medium ms-2"
+          style="background-color: rgba(173, 170, 170, 0.562);"
+          [matMenuTriggerFor]="filterMenu" color="primary">
+          <mat-icon>filter_alt</mat-icon>
+        </button>
+      </div>
+
+      <mat-menu #filterMenu="matMenu">
+        <button mat-menu-item (click)="filtrarPorStatus('Aprovado')">Aprovados</button>
+        <button mat-menu-item (click)="filtrarPorStatus('Reprovado')">Reprovados</button>
+        <button mat-menu-item (click)="filtrarPorStatus('Pendente')">Pendentes</button>
+        <button mat-menu-item (click)="resetarFiltro()">Resetar Filtro</button>
+      </mat-menu>
+
+      <div class="rounded-3 overflow-hidden mat-elevation-z8">
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+          <ng-container matColumnDef="numeroCampo">
+            <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by number" class="col header-size custom-header">
+              N° Campo
+            </th>
+            <td mat-cell *matCellDef="let campo" class="col">{{ campo.numeroCampo }}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="cooperadoNome">
+            <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by name" class="col header-size custom-header">
+              Nome do Cooperado
+            </th>
+            <td mat-cell *matCellDef="let campo" class="col">{{ campo.cooperadoNome }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="col header-size custom-header">
+              Status
+            </th>
+            <td mat-cell *matCellDef="let campo" class="col">
+              <span [ngClass]="{'tag-pendente': campo.situacao === 'Pendente',
+                                'tag-aprovado': campo.situacao === 'Aprovado',
+                                'tag-reprovado': campo.situacao === 'Reprovado'}" class="tag">
+                {{ campo.situacao }}
+              </span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef class="text-right pe-5" class="col header-size custom-header">
+              Ações
+            </th>
+            <td mat-cell *matCellDef="let campo" class="col">
+              <button mat-icon-button matTooltip="Visualizar" color="primary" routerLink="/campos/visualizar-privado/{{ campo.id }}">
+                <mat-icon>visibility</mat-icon>
+              </button>
+
+              <button mat-icon-button matTooltip="Editar" color="primary" routerLink="/campos/editar/{{ campo.id }}">
+                <mat-icon>edit_note</mat-icon>
+              </button>
+
+              <button mat-icon-button matTooltip="Excluir" (click)="confirmarExclusao(confirmacaoModal, campo)" color="warn">
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let campo; columns: displayedColumns;"></tr>
+
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"
+                        showFirstLastButtons
+                        aria-label="Selecione a página dos lotes">
+        </mat-paginator>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #confirmacaoModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmar Exclusão</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss(false)"></button>
+  </div>
+  <div class="modal-body">
+    <p>Deseja realmente excluir este campo?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss(false)">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="executarExclusaoConfirmada(modal)">Confirmar</button>
+  </div>
+</ng-template>

@@ -1,0 +1,67 @@
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-md-5 ">
+
+    <h1 class="fs-2">Editar Lote</h1>
+
+    <form [formGroup]="form" (ngSubmit)="gravar()" class="d-grid mt-4">
+
+      <!-- Dados do Lote -->
+      <mat-card>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>N° Lote</mat-label>
+          <input type="number" formControlName="numeroLote" matInput />
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Situação</mat-label>
+          <mat-select formControlName="situacao">
+            <mat-option value="Pendente">Pendente</mat-option>
+            <mat-option value="Aprovado">Aprovado</mat-option>
+            <mat-option value="Reprovado">Reprovado</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Laudos</mat-label>
+          <input type="text" formControlName="laudos" matInput />
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Selecione os campos desse Lote</mat-label>
+          <mat-select formControlName="campos" multiple="">
+            <mat-option
+              *ngFor="let campo of (campos$ | async)"
+              [value]="campo">
+              {{ campo.numeroCampo }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </mat-card>
+
+
+      <br>
+
+      <div class="d-flex justify-content-end gap-2 mt-2">
+        <button mat-raised-button
+        color="primary"
+        class="col"
+        type="submit">
+        <mat-icon>save</mat-icon>
+        Salvar
+        </button>
+        <button mat-stroked-button
+        color="warn"
+        class="col"
+        type="button"
+        (click)="voltar()">
+        <mat-icon>arrow_back</mat-icon>
+        Voltar
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

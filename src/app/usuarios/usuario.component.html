@@ -1,0 +1,128 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-11 col-lg-11 mx-auto mt-3">
+      <div class="text-center text-md-start">
+        <h1 class="fw-bold fs-2">Usuários</h1>
+      </div>
+
+      <div class="d-grid gap-2 d-md-block my-3">
+        <button (click)="gravar(modal)" mat-raised-button class="me-auto py-2 px-4 fs-5 fw-medium" color="primary">
+          <mat-icon>add</mat-icon> Inserir Usuário
+        </button>
+      </div>
+
+      <div class="rounded-3 overflow-hidden mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef class="col header-size custom-header">Nome</th>
+            <td mat-cell *matCellDef="let usuario" class="col">{{ usuario.nome }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef class="col header-size custom-header">Email</th>
+            <td mat-cell *matCellDef="let usuario" class="col">{{ usuario.email }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef class="col header-size custom-header">Ações</th>
+            <td mat-cell *matCellDef="let usuario" class="text-center col">
+              <button mat-icon-button matTooltip="Excluir" (click)="excluir(usuario)" color="warn">
+                <mat-icon>delete_sweep</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]"
+                        showFirstLastButtons
+                        aria-label="Selecione a página dos lotes">
+        </mat-paginator>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title fs-3 pt-3" id="modal-basic-title">Cadastro de Funcionários</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('fechar')"></button>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="modal.close('gravar')">
+    <div class="modal-body">
+
+      <div formGroupName="usuario">
+        <div class="form-group mb-3 position-relative">
+          <label for="nome" class="form-label">Nome</label>
+          <input formControlName = "nome"
+          class="form-control"
+          type="text"
+          placeholder="Digite o nome do funcionário"
+          [ngClass]="(nome?.touched && nome?.invalid)? 'is-invalid' : ''">
+            <div
+            class="invalid-tooltip"
+            *ngIf="nome?.touched && nome?.invalid">
+              <span *ngIf="nome?.errors?.['required']">O nome é obrigatório</span>
+              <span *ngIf="nome?.errors?.['minlength']">O nome precisa ter no mínimo 3 letras</span>
+            </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label for="email" class="form-label">Email</label>
+          <input formControlName = "email"
+          class="form-control"
+          type="text"
+          placeholder="Digite o email do funcionário"
+          [ngClass]="(email?.touched && email?.invalid)? 'is-invalid' : ''">
+            <div
+            class="invalid-tooltip"
+            *ngIf="email?.touched && email?.invalid">
+              <span *ngIf="email?.errors?.['required']">O email é obrigatório</span>
+              <span *ngIf="email?.errors?.['email']">O email precisa ser válido</span>
+            </div>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label for="funcao" class="form-label">Função</label>
+          <input formControlName = "funcao"
+          class="form-control"
+          type="text"
+          placeholder="Digite a função do funcionário"
+          [ngClass]="(funcao?.touched && funcao?.invalid)? 'is-invalid' : ''">
+            <div
+            class="invalid-tooltip"
+            *ngIf="funcao?.touched && funcao?.invalid">
+              <span *ngIf="funcao?.errors?.['required']">A função é obrigatória</span>
+              <span *ngIf="funcao?.errors?.['minlength']">A função precisa ter no mínimo 3 letras</span>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="form-group mb-3 position-relative" *ngIf="!this.id?.value">
+        <label for="senha" class="form-label">Senha</label>
+        <input formControlName = "senha"
+        class="form-control"
+        type="password"
+        placeholder="Digite a senha do funcionário"
+        [ngClass]="(senha?.touched && senha?.invalid)? 'is-invalid' : ''">
+          <div
+          class="invalid-tooltip"
+          *ngIf="senha?.touched && senha?.invalid">
+            <span *ngIf="senha?.errors?.['required']">O senha é obrigatório</span>
+            <span *ngIf="senha?.errors?.['minlength']">A senha precisa ter no mínimo 6 letras</span>
+          </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-light col-md-3" [style.color]="'#009688'" (click)="modal.dismiss('fechar')">Cancelar</button>
+      <button type="submit" class="btn btn-outline-light col-md-3" [style.background-color]="'#009688'" [disabled]="this.form.invalid">Enviar</button>
+    </div>
+  </form>
+</ng-template>
+

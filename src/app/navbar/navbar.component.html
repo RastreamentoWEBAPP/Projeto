@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light" [style.background-color]="'#009688'">
+  <div class="container m-1">
+    <!-- <span class="d-flex align-items-center gap-2 fw-medium fs-4 ps-3 text-light m-2 pe-2">RastreamentoApp</span> -->
+    <a class="text-decoration-none d-flex align-items-center
+              gap-2 fw-semibold fs-3 ps-2 text-light m-2 pe-2"
+       routerLink="/">RastreamentoApp</a>
+    <button (click)="estaColapsada = !estaColapsada" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [ngbCollapse]="!estaColapsada">
+
+      <div class="links fw-semibold w-100 text-center" *ngIf="usuarioLogado | async">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <li class="nav-item">
+            <button mat-button class="text-light fs-5 ml-3" routerLink="/usuarios">Usuários</button>
+          </li>
+
+          <li class="nav-item">
+            <button mat-button class="text-light fs-5 ml-3" routerLink="/campos/listar">Campos</button>
+          </li>
+
+          <li class="nav-item">
+            <button mat-button class="text-light fs-5 ml-3" routerLink="/lotes/listar">Lotes</button>
+          </li>
+
+          <div class="ms-auto">
+            <button mat-raised-button appCardHover (click)="sair()" class="rounded-5" color="primary">
+              <mat-icon iconPositionEnd>logout</mat-icon>
+            </button>
+          </div>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

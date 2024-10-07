@@ -1,0 +1,34 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.col {
+  flex: 1;
+  text-align: center; /* Ajuste conforme necessário */
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.header-size {
+  color: black;
+  font-weight: medium;
+  font-size: medium;
+}
+
+.custom-header {
+  background-color: rgba(173, 170, 170, 0.562);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}

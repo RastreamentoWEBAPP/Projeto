@@ -1,0 +1,548 @@
+<div class="container col-12 col-md-11 col-lg-11 mx-auto mt-5 row align-self-center justify-content-center">
+
+  <div class="col-12 d-flex justify-content-center mb-4">
+    <img src="assets/Dagostin.svg" alt="Logo Dagostin" class="img-fluid" style="max-width: 200px;">
+  </div>
+
+  <section class="col-sm col-xxl-12 col-12 col-md-12 col-lg-12">
+
+    <mat-card>
+
+      <mat-card-content class="d-grid gap-3 p-3">
+        <mat-label class="fs-3 fw-medium">
+          Campo {{ campo?.numeroCampo}} -
+          <span [ngClass]="{
+            'tag-pendente': campo?.situacao === 'Pendente',
+            'tag-aprovado': campo?.situacao === 'Aprovado',
+            'tag-reprovado': campo?.situacao === 'Reprovado'
+          }" class="tag">
+            {{ campo?.situacao }}
+          </span>
+        </mat-label>
+        <br>
+
+        <!-- Dados do Produtor -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="fw-semibold">
+                Dados do Produtor
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-list>
+              <mat-list-item class="row align-items-center">
+                <dt class="row ps-3">
+                  <label class="control-label">Renasem do Produtor:</label>
+                </dt>
+                <dd class="row pt-2 ps-3">
+                  SC-00570/2007
+                </dd>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+
+              <mat-list-item class="row align-items-center">
+                <dt class="row ps-3">
+                  <label class="control-label">Nome do Produtor:</label>
+                </dt>
+                <dd class="row pt-2 ps-3">
+                  DAGOSTIN INDUSTRIA E COMERCIO DE SEMENTES LTDA
+                </dd>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+
+              <mat-list-item class="row align-items-center">
+                <dt class="row ps-3">
+                  <label class="control-label">Email do Produtor:</label>
+                </dt>
+                <dd class="row pt-2 ps-3">
+                  {{ "contato@dagostinsementes.com.br" }}
+                </dd>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+
+            </mat-list>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Dados do Campo -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-weight: bold;">
+                Dados do Campo
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-list>
+
+              <mat-list-item class="row align-items-center">
+                <dt class="row ps-3">
+                  <label class="control-label">N° Campo:</label>
+                </dt>
+                <dd class="row pt-2 ps-3">
+                  {{ campo?.numeroCampo }}
+                </dd>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+
+              <div *ngIf="campo?.LinkImagens != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Imagens do Campo:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    <a [href]="campo?.LinkImagens" target="_blank">{{ campo?.LinkImagens }}</a>
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.cooperadoNome != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Cooperado Nome:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.cooperadoNome }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.safra != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Safra:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.safra }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.especie != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Especie:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.especie }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.categoria != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Categoria:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.categoria }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.numeroGlebas != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Número de Glebas:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.numeroGlebas }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.latitude != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Coordenadas(Lat/Long):</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    <a [href]="'https://www.google.com.br/maps/place/' + campo?.latitude + '+' + campo?.longitude"
+                      target="_blank">{{ campo?.latitude }} + {{ campo?.longitude }}</a>
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.propriedadeNome != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Nome da Propriedade:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.propriedadeNome }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.municipio != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Município:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.municipio }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.uf != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">UF:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.uf }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.cultivar != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Cultivar:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.cultivar }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.area != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Área:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.area }} ha
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.dataPlantio != null && campo?.dataPlantio != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Data de Plantio:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ formatarData(campo?.dataPlantio) }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.dataColheita != null  && campo?.dataColheita != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Data da Colheita:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ formatarData(campo?.dataColheita) }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.dataPlantio != null && campo?.dataColheita != null &&
+                          campo?.dataPlantio != '' && campo?.dataColheita != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Ciclo de Produção:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ calcularCiclo(campo?.dataColheita , campo?.dataPlantio) }} dias
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.producaoEstimada != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Produção Estimada:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.producaoEstimada }} ton
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.producaoBruta != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Produção Bruta:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.producaoBruta }} ton
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.dataPlantio != null && campo?.dataColheita != null &&
+                          campo?.dataPlantio != '' && campo?.dataColheita != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Ciclo de Produção:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ calcularCiclo(campo?.dataColheita , campo?.dataPlantio) }} dias
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.producaoBruta != '' && campo?.area != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Produtividade (Produção Bruta / Área):</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ calcularProdutividade(campo?.producaoBruta , campo?.area) }} ton/ha
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+            </mat-list>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Resultados Parciais 01 - Emergência -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-weight: bold;">
+                Resultado da Emergência
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngIf="campo?.avaliacaoEmergencia?.conclusoes != '' ; else noResults">
+              <mat-list>
+                <div *ngIf="campo?.avaliacaoEmergencia?.conclusoes != ''">
+                  <mat-divider></mat-divider>
+                  <mat-list-item class="row h-100" lines="1">
+                    <dt class="row mt-3 align-self-start">
+                      <label class="control-label ps-3">Conclusões:</label>
+                    </dt>
+                    <dd class="row m-3">
+                      {{ campo?.avaliacaoEmergencia?.conclusoes }}
+                    </dd>
+                  </mat-list-item>
+                </div>
+              </mat-list>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Resultados Parciais 02 - Florecimento -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-weight: bold;">
+                Resultado do Florecimento
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngIf="campo?.avaliacaoFlorecimento?.conclusoes != '' ; else noResults">
+              <mat-list>
+                <div *ngIf="campo?.avaliacaoFlorecimento?.conclusoes != ''">
+                  <mat-divider></mat-divider>
+                  <mat-list-item class="row h-100" lines="1">
+                    <dt class="row mt-3 align-self-start">
+                      <label class="control-label">Conclusões:</label>
+                    </dt>
+                    <dd class="row m-3">
+                      {{ campo?.avaliacaoFlorecimento?.conclusoes }}
+                    </dd>
+                  </mat-list-item>
+                </div>
+              </mat-list>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Resultados Parciais 03 - Pré Colheita -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-weight: bold;">
+                Resultado da Pré Colheita
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div *ngIf="campo?.avaliacaoPreColheita?.conclusoes != '' ; else noResults">
+              <mat-list>
+                <div *ngIf="campo?.avaliacaoPreColheita?.conclusoes != ''">
+                  <mat-divider></mat-divider>
+                  <mat-list-item class="row h-100" lines="1">
+                    <dt class="row mt-3 align-self-start">
+                      <label class="control-label">Conclusões:</label>
+                    </dt>
+                    <dd class="row m-3">
+                      {{ campo?.avaliacaoPreColheita?.conclusoes }}
+                    </dd>
+                  </mat-list-item>
+                </div>
+              </mat-list>
+            </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Resultado Final -->
+        <mat-accordion *ngIf="campo?.dataColheita != '' || campo?.umidade != ''
+                           || campo?.producaoBruta != '' || campo?.observacoes != ''
+                           || (campo?.producaoBruta != '' && campo?.area != '')">
+
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-weight: bold;">
+                Resultado Final
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-list>
+              <div *ngIf="campo?.situacao != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Situação:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.situacao }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.dataColheita != null && campo?.dataColheita != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Data da Colheita:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ formatarData(campo?.dataColheita) }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.umidade != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Umidade:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.umidade }}%
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.producaoBruta != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Produção Bruta:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ campo?.producaoBruta }} ton
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.dataPlantio != null && campo?.dataColheita != null &&
+                          campo?.dataPlantio != '' && campo?.dataColheita != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Ciclo de Produção:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ calcularCiclo(campo?.dataColheita , campo?.dataPlantio) }} dias
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.producaoBruta != '' && campo?.area != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Produtividade (Produção Bruta / Área):</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ calcularProdutividade(campo?.producaoBruta , campo?.area) }} ton/ha
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <div *ngIf="campo?.observacoes != ''">
+                <mat-list-item class="row h-100" lines="1">
+                  <dt class="row mt-3 align-self-start">
+                    <label class="control-label">Observações:</label>
+                  </dt>
+                  <dd class="row m-3">
+                    {{ campo?.observacoes }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+            </mat-list>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </mat-card-content>
+
+      <mat-card-footer class="my-2">
+        <br>
+        <div class="row px-4 gap-2">
+
+          <button mat-stroked-button color="primary" class="col" type="button" (click)="voltar()">
+            <mat-icon>arrow_back</mat-icon>
+            Voltar
+          </button>
+
+        </div>
+      </mat-card-footer>
+
+    </mat-card>
+
+  </section>
+</div>
+
+<ng-template #noResults>
+  <mat-list>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-list-item class="row align-items-center">
+      <dd>
+        Ainda não há dados cadastrados para esta avaliação.
+      </dd>
+    </mat-list-item>
+  </mat-list>
+</ng-template>

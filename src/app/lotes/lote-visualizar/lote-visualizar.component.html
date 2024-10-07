@@ -1,0 +1,150 @@
+<div class="container col-12 col-md-11 col-lg-11 mx-auto mt-5 row align-self-center justify-content-center">
+  <section class="col-sm col-xxl-12 col-12 col-md-12 col-lg-12">
+
+    <mat-card>
+      <mat-card-content class="d-grid gap-3 p-3">
+        <mat-label class="fs-3 fw-medium"> Lote {{ lote?.numeroLote}} -
+          <span [ngClass]="{
+            'tag-pendente': lote?.situacao === 'Pendente',
+            'tag-aprovado': lote?.situacao === 'Aprovado',
+            'tag-reprovado': lote?.situacao === 'Reprovado'
+          }" class="tag">
+            {{ lote?.situacao }}
+          </span> </mat-label>
+        <br>
+
+        <!-- Dados do Lote -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false" [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="fw-semibold">
+                Dados do Lote
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-divider></mat-divider>
+
+            <mat-list>
+              <mat-list-item class="row align-items-center">
+                <dt class="row ps-5">
+                  <label class="control-label">N° Do Lote:</label>
+                </dt>
+                <dd class="row pt-2 ps-3">
+                  {{ lote?.numeroLote }}
+                </dd>
+              </mat-list-item>
+
+              <div *ngIf="lote?.situacao != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-5">
+                    <label class="control-label">Status do Lote:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ lote?.situacao }}
+                  </dd>
+                </mat-list-item>
+              </div>
+
+              <div *ngIf="lote?.laudos != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-5">
+                    <label class="control-label">Laudos do Lote:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    <a [href]="lote?.laudos" target="_blank">{{ lote?.laudos }}</a>
+                  </dd>
+                </mat-list-item>
+              </div>
+
+
+            </mat-list>
+
+        </mat-expansion-panel>
+        </mat-accordion>
+
+        <!-- Campos do Lote -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="fw-semibold">
+                Campos do Lote
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-divider></mat-divider>
+
+            <table mat-table [dataSource]="Campos$" matSort>
+
+              <ng-container matColumnDef="numeroCampo">
+                <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by number" class="col header-size">
+                  N° Campo
+                </th>
+                <td mat-cell *matCellDef="let campo" class="col">{{ campo.numeroCampo }}</td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="nomeProdutor">
+                <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by name" class="col header-size">
+                  Propriedade
+                </th>
+                <td mat-cell *matCellDef="let campo" class="col">{{ campo.propriedadeNome }}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef class="col header-size custom-header">
+                  Status
+                </th>
+                <td mat-cell *matCellDef="let campo" class="col">
+                  <span [ngClass]="{'tag-pendente': campo.situacao === 'Pendente',
+                                    'tag-aprovado': campo.situacao === 'Aprovado',
+                                    'tag-reprovado': campo.situacao === 'Reprovado'}" class="tag">
+                    {{ campo.situacao }}
+                  </span>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="acoes">
+                <th mat-header-cell *matHeaderCellDef class="text-right pe-5" class="col header-size">
+                  Ações
+                </th>
+
+                <td mat-cell *matCellDef="let campo" class="col">
+                  <button mat-icon-button matTooltip="Visualizar" color="primary" routerLink="/campos/visualizar-privado/{{ campo.id }}">
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let campo; columns: displayedColumns;"></tr>
+
+            </table>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card-content>
+
+
+
+      <mat-card-footer class="my-2">
+        <br>
+        <div class="row px-4 gap-2">
+
+          <button mat-stroked-button
+            color="primary"
+            class="col"
+            type="button"
+            (click)="voltar()">
+            <mat-icon>arrow_back</mat-icon>
+            Voltar
+          </button>
+
+        </div>
+      </mat-card-footer>
+
+    </mat-card>
+
+  </section>
+</div>
