@@ -1,0 +1,32 @@
+[debug] [2024-10-07T02:39:45.264Z] ----------------------------------------------------------------------
+[debug] [2024-10-07T02:39:45.287Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Tales\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-10-07T02:39:45.287Z] CLI Version:   13.18.0
+[debug] [2024-10-07T02:39:45.287Z] Platform:      win32
+[debug] [2024-10-07T02:39:45.287Z] Node Version:  v20.15.0
+[debug] [2024-10-07T02:39:45.287Z] Time:          Sun Oct 06 2024 23:39:45 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2024-10-07T02:39:45.287Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-10-07T02:39:45.369Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-10-07T02:39:45.369Z] > authorizing via signed-in user (rastreamentowebapp@gmail.com)
+[debug] [2024-10-07T02:39:45.370Z] [iam] checking project rastreamento-webapp-8ef94 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-10-07T02:39:45.374Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/rastreamento-webapp-8ef94:testIamPermissions [none]
+[debug] [2024-10-07T02:39:45.374Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/rastreamento-webapp-8ef94:testIamPermissions x-goog-quota-user=projects/rastreamento-webapp-8ef94
+[debug] [2024-10-07T02:39:45.374Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/rastreamento-webapp-8ef94:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-10-07T02:39:46.303Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/rastreamento-webapp-8ef94:testIamPermissions 200
+[debug] [2024-10-07T02:39:46.304Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/rastreamento-webapp-8ef94:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-10-07T02:39:46.304Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/rastreamento-webapp-8ef94 [none]
+[debug] [2024-10-07T02:39:46.698Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/rastreamento-webapp-8ef94 200
+[debug] [2024-10-07T02:39:46.698Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/rastreamento-webapp-8ef94 {"projectId":"rastreamento-webapp-8ef94","projectNumber":"50988482863","displayName":"Rastreamento-WebApp","name":"projects/rastreamento-webapp-8ef94","resources":{"hostingSite":"rastreamento-webapp-8ef94"},"state":"ACTIVE","etag":"1_a79f9d5a-bacb-4580-a69c-832ca73da0ec"}
+[info] 
+[info] === Deploying to 'rastreamento-webapp-8ef94'...
+[info] 
+[info] i  deploying firestore, hosting 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2024-10-07T02:39:46.703Z] >>> [apiv2][query] POST https://firebaserules.googleapis.com/v1/projects/rastreamento-webapp-8ef94:test [none]
+[debug] [2024-10-07T02:39:46.703Z] >>> [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/rastreamento-webapp-8ef94:test [omitted]
+[debug] [2024-10-07T02:39:48.040Z] <<< [apiv2][status] POST https://firebaserules.googleapis.com/v1/projects/rastreamento-webapp-8ef94:test 200
+[debug] [2024-10-07T02:39:48.040Z] <<< [apiv2][body] POST https://firebaserules.googleapis.com/v1/projects/rastreamento-webapp-8ef94:test {}
+[info] +  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2024-10-07T02:39:48.044Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/rastreamento-webapp-8ef94/versions [none]
+[debug] [2024-10-07T02:39:48.044Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/rastreamento-webapp-8ef94/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}

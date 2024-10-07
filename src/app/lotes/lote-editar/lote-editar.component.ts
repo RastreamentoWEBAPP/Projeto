@@ -52,6 +52,9 @@ export class LoteEditarComponent implements OnInit {
           situacao: lote.situacao,
           laudos: lote.laudos,
           campos: this.campos$,
+          safra: lote.safra,
+          imagens: lote.imagens,
+          categoria:lote.categoria,
         });
       }
     });
