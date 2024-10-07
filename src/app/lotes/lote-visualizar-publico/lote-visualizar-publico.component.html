@@ -40,10 +40,12 @@
                 </dd>
               </mat-list-item>
 
+              <mat-divider></mat-divider>
+
               <div *ngIf="lote?.situacao != ''">
                 <mat-list-item class="row align-items-center">
                   <dt class="row ps-3">
-                    <label class="control-label">Status do Lote:</label>
+                    <label class="control-label">Status:</label>
                   </dt>
                   <dd class="row pt-2 ps-3">
                     {{ lote?.situacao }}
@@ -51,17 +53,74 @@
                 </mat-list-item>
               </div>
 
+              <mat-divider></mat-divider>
+
+              <div *ngIf="lote?.categoria != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Categoria:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ lote?.categoria }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
+              <mat-list-item class="row align-items-center">
+                <dt class="row ps-3">
+                  <label class="control-label">Germinação mínima:</label>
+                </dt>
+                <dd class="row pt-2 ps-3">
+                  {{ "80%" }}
+                </dd>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+
+              <mat-list-item class="row align-items-center">
+                <dt class="row ps-3">
+                  <label class="control-label">Pureza:</label>
+                </dt>
+                <dd class="row pt-2 ps-3">
+                  {{ "99%" }}
+                </dd>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+
+              <div *ngIf="lote?.safra != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Safra:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    {{ lote?.safra }}
+                  </dd>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </div>
+
               <div *ngIf="lote?.laudos != ''">
                 <mat-list-item class="row align-items-center">
                   <dt class="row ps-3">
-                    <label class="control-label">Laudos do Lote:</label>
+                    <label class="control-label">Laudos:</label>
                   </dt>
                   <dd class="row pt-2 ps-3">
                     <a [href]="lote?.laudos" target="_blank">{{ lote?.laudos }}</a>
                   </dd>
                 </mat-list-item>
+                <mat-divider></mat-divider>
               </div>
 
+              <div *ngIf="lote?.imagens != ''">
+                <mat-list-item class="row align-items-center">
+                  <dt class="row ps-3">
+                    <label class="control-label">Imagens:</label>
+                  </dt>
+                  <dd class="row pt-2 ps-3">
+                    <a [href]="lote?.imagens" target="_blank">{{ lote?.imagens }}</a>
+                  </dd>
+                </mat-list-item>
+              </div>
 
             </mat-list>
 

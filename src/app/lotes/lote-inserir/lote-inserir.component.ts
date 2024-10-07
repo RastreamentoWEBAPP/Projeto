@@ -31,7 +31,10 @@ export class LoteInserirComponent implements OnInit {
     this.form = this.formBuilder.group({
       numeroLote: ['', [Validators.required, Validators.minLength(1)]],
       campos: [[], [Validators.required]],
+      categoria: [[], [Validators.required]],
+      safra: [[], [Validators.required]],
       laudos: [''],
+      imagens: [''],
       situacao:['Pendente', [Validators.required]],
     });
 
@@ -46,15 +49,21 @@ export class LoteInserirComponent implements OnInit {
         const numeroLote = this.form.value.numeroLote;
         const idsDosCampos = camposSelecionados.map((campo: any) => campo.id);
         const laudos = this.form.value.laudos;
+        const imagens = this.form.value.imagens;
         const numerosDosCampos = camposSelecionados.map((campo: any) => campo.numeroCampo);
         const situacao = this.form.value.situacao;
+        const categoria = this.form.value.categoria;
+        const safra = this.form.value.safra;
 
         const loteObj = new Lote();
         loteObj.numeroLote = numeroLote;
         loteObj.camposIds = idsDosCampos;
         loteObj.camposNumeros = numerosDosCampos;
         loteObj.situacao = situacao;
-        loteObj.laudos = laudos
+        loteObj.categoria = categoria;
+        loteObj.safra = safra;
+        loteObj.laudos = laudos;
+        loteObj.imagens = imagens;
 
         const loteData = loteObj.toJSON();
 

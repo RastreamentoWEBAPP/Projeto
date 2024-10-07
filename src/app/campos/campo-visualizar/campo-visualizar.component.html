@@ -1,8 +1,14 @@
 <div class="container col-12 col-md-11 col-lg-11 mx-auto mt-5 row align-self-center justify-content-center">
+
+  <div class="col-12 d-flex justify-content-center mb-4">
+    <img src="assets/Dagostin.svg" alt="Logo Dagostin" class="img-fluid" style="max-width: 200px;">
+  </div>
+
   <section class="col-sm col-xxl-12 col-12 col-md-12 col-lg-12">
 
     <mat-card>
-      <mat-card-content class="d-grid gap-3 p-3">
+
+      <mat-card-content class="d-grid gap-3">
         <mat-label class="fs-3 fw-medium">
           Campo {{ campo?.numeroCampo}} -
           <span [ngClass]="{
@@ -17,9 +23,10 @@
 
         <!-- Dados do Produtor -->
         <mat-accordion>
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false" [expanded]="true">
             <mat-expansion-panel-header>
-              <mat-panel-title style="font-weight: bold;">
+              <mat-panel-title class="fw-semibold">
                 Dados do Produtor
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -28,8 +35,8 @@
 
             <mat-list>
               <mat-list-item class="row align-items-center">
-                <dt class="row">
-                  <label class="control-label">Renasem do Produtor:</label>
+                <dt class="row ">
+                  <label class="control-label">Renasem:</label>
                 </dt>
                 <dd class="row pt-2 ps-3">
                   SC-00570/2007
@@ -37,9 +44,9 @@
               </mat-list-item>
               <mat-divider></mat-divider>
 
-              <mat-list-item class="row align-items-center">
-                <dt class="row">
-                  <label class="control-label">Nome do Produtor:</label>
+              <mat-list-item class="row h-100" lines="1">
+                <dt class="row ">
+                  <label class="control-label">Nome:</label>
                 </dt>
                 <dd class="row pt-2 ps-3">
                   DAGOSTIN INDUSTRIA E COMERCIO DE SEMENTES LTDA
@@ -47,15 +54,14 @@
               </mat-list-item>
               <mat-divider></mat-divider>
 
-              <mat-list-item class="row align-items-center">
-                <dt class="row">
-                  <label class="control-label">Email do Produtor:</label>
+              <mat-list-item class="row h-100" lines="1">
+                <dt class="row ">
+                  <label class="control-label">Email:</label>
                 </dt>
-                <dd class="row pt-2 ps-3">
+                <dd class="row pt-2 ps-3" style="word-break: break-word;">
                   {{ "contato@dagostinsementes.com.br" }}
                 </dd>
               </mat-list-item>
-              <mat-divider></mat-divider>
 
             </mat-list>
 
@@ -66,7 +72,7 @@
         <mat-accordion>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title style="font-weight: bold;">
+              <mat-panel-title class="fw-semibold">
                 Dados do Campo
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -324,7 +330,7 @@
         <mat-accordion>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title style="font-weight: bold;">
+              <mat-panel-title class="fw-semibold">
                 Resultado da Emergência
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -477,7 +483,7 @@
         <mat-accordion>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title style="font-weight: bold;">
+              <mat-panel-title class="fw-semibold">
                 Resultado do Florecimento
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -630,7 +636,7 @@
         <mat-accordion>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title style="font-weight: bold;">
+              <mat-panel-title class="fw-semibold">
                 Resultado da Pré Colheita
               </mat-panel-title>
             </mat-expansion-panel-header>
@@ -786,7 +792,7 @@
 
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title style="font-weight: bold;">
+              <mat-panel-title class="fw-semibold">
                 Resultado Final
               </mat-panel-title>
             </mat-expansion-panel-header>

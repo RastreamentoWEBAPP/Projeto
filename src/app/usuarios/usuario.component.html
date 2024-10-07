@@ -6,7 +6,9 @@
       </div>
 
       <div class="d-grid gap-2 d-md-block my-3">
-        <button (click)="gravar(modal)" mat-raised-button class="me-auto py-2 px-4 fs-5 fw-medium" color="primary">
+        <button (click)="gravar(modal)" mat-raised-button
+          class="me-auto py-2 px-4 fs-5 fw-medium"
+          style="background-color: #186844; color: #FFFFFF;">
           <mat-icon>add</mat-icon> Inserir Usuário
         </button>
       </div>
@@ -120,8 +122,8 @@
 
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-light col-md-3" [style.color]="'#009688'" (click)="modal.dismiss('fechar')">Cancelar</button>
-      <button type="submit" class="btn btn-outline-light col-md-3" [style.background-color]="'#009688'" [disabled]="this.form.invalid">Enviar</button>
+      <button type="button" class="btn btn-outline-light col-md-3" [style.color]="'#186844'" (click)="modal.dismiss('fechar')">Cancelar</button>
+      <button type="submit" class="btn btn-outline-light col-md-3" [style.background-color]="'#186844'" [disabled]="this.form.invalid">Enviar</button>
     </div>
   </form>
 </ng-template>

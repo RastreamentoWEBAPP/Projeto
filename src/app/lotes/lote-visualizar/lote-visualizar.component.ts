@@ -18,7 +18,7 @@ export class LoteVisualizarComponent implements OnInit {
   public Campos$: Observable<Campo[]>;
   public panelOpenState = true;
 
-  displayedColumns: string[] = ['numeroCampo', 'nomeProdutor', 'status', 'acoes'];
+  displayedColumns: string[] = ['numeroCampo', 'status', 'acoes'];
   dataSource: MatTableDataSource<Campo>;
 
   @ViewChild(MatSort) sort: MatSort;

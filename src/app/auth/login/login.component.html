@@ -6,7 +6,7 @@
           <div class="card-body">
 
             <form [formGroup]="form!" (ngSubmit)="login()">
-              <h1 class="fw-semibold text-center fs-2 m-3 mb-4" [style.color]="'#009688'">Login de Usuário</h1>
+              <h1 class="fw-semibold text-center fs-2 m-3 mb-4" [style.color]="'#186844'">Login de Usuário</h1>
 
               <div class="form-group my-3 position-relative">
                 <label class="form-label fs-6" for="email">E-mail</label>
@@ -28,12 +28,12 @@
 
               <a role="button"
                  class="fs-6"
-                 [style.color]="'#009688'"
+                 [style.color]="'#186844'"
                  (click) = abrirModalRecuperacao(content)>Esqueceu a sua senha?</a>
 
               <div class="g-grid d-grid gap-1 m-1 mt-4 mb-3">
                 <button type="submit" class="button btn btn-light px-5 rounded-pill p-2 fw-medium"
-                        [style.background-color]="'#009688'" [style.color]="'#ffffff'">
+                        [style.background-color]="'#186844'" [style.color]="'#ffffff'">
                   ENTRAR
                 </button>
               </div>
@@ -66,8 +66,8 @@
     </div>
   </div>
     <div class="modal-footer">
-      <button type="button" class="btn col-md-3" [style.color]="'#009688'"(click)="modal.dismiss('fechar')">Cancelar</button>
-      <button type="submit" class="btn text-light col-md-3" [style.background-color]="'#009688'">Enviar</button>
+      <button type="button" class="btn col-md-3" [style.color]="'#186844'"(click)="modal.dismiss('fechar')">Cancelar</button>
+      <button type="submit" class="btn text-light col-md-3" [style.background-color]="'#186844'">Enviar</button>
     </div>
   </form>
 </ng-template>
