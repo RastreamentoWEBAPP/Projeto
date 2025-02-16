@@ -18,7 +18,7 @@ import { LoteLocalStorageService } from '../service/lote-local-storage.service';
 })
 
 export class LoteListarComponent implements OnInit {
-  displayedColumns: string[] = ['numeroLote', 'camposIds', 'status', 'acoes'];
+  displayedColumns: string[] = ['numeroLote', 'camposIds', 'status', 'safra', 'acoes'];
   public filtro = { numeroLote: '', safra: '', status: '' };
   dataSource: MatTableDataSource<Lote>;
 

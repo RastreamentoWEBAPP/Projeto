@@ -18,7 +18,7 @@ import { CampoLocalStorageService } from '../service/campo-local-storage.service
   styleUrls: ['./campo-listar.component.scss']
 })
 export class ListarCamposComponent implements OnInit {
-  displayedColumns: string[] = ['numeroCampo', 'cooperadoNome', 'status', 'acoes'];
+  displayedColumns: string[] = ['numeroCampo', 'cooperadoNome', 'status', 'safra', 'acoes'];
   dataSource: MatTableDataSource<Campo>;
 
   @ViewChild(MatSort) sort: MatSort;
