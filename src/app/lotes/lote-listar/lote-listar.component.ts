@@ -9,6 +9,7 @@ import { Lote } from '../models/lote.model';
 import { LoteService } from '../service/lote.service';
 import { QrCodeModalComponent } from '../qr-code-modal/qr-code-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { LoteLocalStorageService } from '../service/lote-local-storage.service';
 
 @Component({
   selector: 'app-lote-listar',
@@ -18,6 +19,7 @@ import { MatPaginator } from '@angular/material/paginator';
 
 export class LoteListarComponent implements OnInit {
   displayedColumns: string[] = ['numeroLote', 'camposIds', 'status', 'acoes'];
+  public filtro = { numeroLote: '', safra: '', status: '' };
   dataSource: MatTableDataSource<Lote>;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -31,13 +33,23 @@ export class LoteListarComponent implements OnInit {
 
   constructor(
     private loteService: LoteService,
+    private loteLocalStorageService: LoteLocalStorageService,
     private modalService: NgbModal,
     private toastrService: ToastrService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.carregarLotes();
+    this.carregarFiltrosSalvos();
+
+    this.Lotes$ = this.loteService.selecionarTodos();
+    this.Lotes$.subscribe(lotes => {
+      this.lotesOriginais = lotes;
+      this.dataSource = new MatTableDataSource<Lote>(lotes);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      this.aplicarFiltro();
+    });
   }
 
   private carregarLotes(): void {
@@ -79,14 +91,37 @@ export class LoteListarComponent implements OnInit {
     });
   }
 
-  filtrarPorStatus(status: string): void {
-    if (status === 'Aprovado' || status === 'Reprovado' || status === 'Pendente') {
-      const filteredLotes = this.lotesOriginais.filter(lote => lote.situacao === status);
-      this.dataSource.data = filteredLotes;
+  abrirModalFiltro(modal: TemplateRef<any>) {
+    this.modalService.open(modal, { size: 'lg' });
+  }
+
+  aplicarFiltro(): void {
+    this.loteLocalStorageService.salvarFiltros(this.filtro);
+    this.dataSource.data = this.lotesOriginais.filter(lote => {
+      debugger
+      return (
+        (this.filtro.numeroLote ? lote.numeroLote.includes(this.filtro.numeroLote) : true) &&
+        (this.filtro.safra ? lote.safra.includes(this.filtro.safra) : true) &&
+        (this.filtro.status ? lote.situacao === this.filtro.status : true)
+      );
+    });
+  }
+
+  private carregarFiltrosSalvos(): void {
+    const filtrosSalvos = this.loteLocalStorageService.obterFiltros();
+    if (filtrosSalvos) {
+      this.filtro = filtrosSalvos;
     }
   }
 
+  filtrarPorStatus(status: string): void {
+    this.filtro.status = status;
+    this.aplicarFiltro();
+  }
+
   resetarFiltro(): void {
-    this.dataSource.data = this.lotesOriginais;
+    this.filtro = { numeroLote: '', safra: '', status: '' };
+    this.loteLocalStorageService.limparFiltros();
+    this.aplicarFiltro();
   }
 }

@@ -15,24 +15,17 @@
         </button>
         <button mat-raised-button class="me-auto py-2 px-4 fs-5 fw-medium ms-2"
           style="background-color: rgba(173, 170, 170, 0.562);"
-          [matMenuTriggerFor]="filterMenu" color="primary">
+          (click)="abrirModalFiltro(filtroModal)" color="primary">
           <mat-icon>filter_alt</mat-icon>
         </button>
       </div>
-
-      <mat-menu #filterMenu="matMenu">
-        <button mat-menu-item (click)="filtrarPorStatus('Aprovado')">Aprovados</button>
-        <button mat-menu-item (click)="filtrarPorStatus('Reprovado')">Reprovados</button>
-        <button mat-menu-item (click)="filtrarPorStatus('Pendente')">Pendentes</button>
-        <button mat-menu-item (click)="resetarFiltro()">Resetar Filtro</button>
-      </mat-menu>
 
       <div class="rounded-3 overflow-hidden mat-elevation-z8">
 
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
           <ng-container matColumnDef="numeroCampo">
-            <th mat-header-cell *matHeaderCellDef sortActionDescription="Sort by number" class="col header-size custom-header">
+            <th mat-header-cell *matHeaderCellDef class="col header-size custom-header" mat-sort-header>
               N° Campo
             </th>
             <td mat-cell *matCellDef="let campo" class="col">{{ campo.numeroCampo }}</td>
@@ -105,5 +98,42 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modal.dismiss(false)">Cancelar</button>
     <button type="button" class="btn btn-danger" (click)="executarExclusaoConfirmada(modal)">Confirmar</button>
+  </div>
+</ng-template>
+
+<ng-template #filtroModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Filtro Avançado</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label class="form-label">Número do Campo</label>
+        <input type="text" class="form-control" [(ngModel)]="filtro.numeroCampo" name="numeroCampo">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Safra</label>
+        <input type="text" class="form-control" [(ngModel)]="filtro.safra" name="safra">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Nome do Cooperado</label>
+        <input type="text" class="form-control" [(ngModel)]="filtro.cooperadoNome" name="cooperadoNome">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Status</label>
+        <select class="form-select" [(ngModel)]="filtro.situacao" name="situacao">
+          <option value="">Todos</option>
+          <option value="Aprovado">Aprovado</option>
+          <option value="Reprovado">Reprovado</option>
+          <option value="Pendente">Pendente</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-light col-md-3" [style.color]="'#186844'" (click)="modal.dismiss()">Cancelar</button>
+    <button type="button" class="btn btn-primary" [style.background-color]="'#186844'" (click)="resetarFiltro(); modal.dismiss()">Limpar Filtro</button>
+    <button type="button" class="btn btn-primary" [style.background-color]="'#186844'" (click)="aplicarFiltro(); modal.dismiss()">Aplicar Filtro</button>
   </div>
 </ng-template>
